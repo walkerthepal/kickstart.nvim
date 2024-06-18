@@ -225,6 +225,7 @@ vim.opt.rtp:prepend(lazypath)
 --
 -- NOTE: Here is where you install your plugins.
 require('lazy').setup({
+  { 'akinsho/flutter-tools.nvim' },
   -- NOTE: Plugins can be added with a link (or for a github repo: 'owner/repo' link).
   'tpope/vim-sleuth', -- Detect tabstop and shiftwidth automatically
 
@@ -567,7 +568,7 @@ require('lazy').setup({
       local servers = {
         -- clangd = {},
         gopls = {},
-        pyright = {},
+        --pyright = {},
         -- rust_analyzer = {},
         -- ... etc. See `:help lspconfig-all` for a list of all the pre-configured LSPs
         --
@@ -912,3 +913,26 @@ vim.api.nvim_set_hl(0, 'Normal', { bg = 'none', ctermbg = 'none', blend = 85 })
 vim.api.nvim_set_hl(0, 'NormalFloat', { bg = 'none', ctermbg = 'none', blend = 85 })
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
+--
+-- #Add Dart / Flutter Support
+-- Lua
+require('lspconfig').dartls.setup {}
+
+-- Flutter tools
+require('flutter-tools').setup {
+  ui = {
+    -- the border type to use in the UI windows.
+    border = 'rounded',
+  },
+  decorations = {
+    -- hilight style to use for rendering brackets in the editor window. Options: "box", "underline"
+    render_brackets = 'underline',
+  },
+  dev_log = {
+    enabled = true,
+    open_cmd = 'tabedit', -- command to use to open the log buffer
+  },
+  outline = {
+    open_cmd = '30vnew', -- command to use to open the outline buffer
+  },
+}
