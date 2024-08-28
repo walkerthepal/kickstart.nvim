@@ -6,5 +6,5 @@ if status is-interactive
   alias ls='ls -la'
   alias nv='nvim'
   #Add to Path
-  fish_add_path /opt/flutter/bin
+  fish_add_path /home/walker/go/bin
 end
